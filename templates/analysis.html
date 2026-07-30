@@ -1,0 +1,793 @@
+{% extends 'base.html' %} {% block title %} Project Analysis | Osteoporosis Risk
+Prediction {% endblock %} {% block content %}
+
+<!-- =================== PAGE HEADER =================== -->
+
+<section class="bg-wine text-cream py-16">
+  <div class="max-w-7xl mx-auto px-6 text-center">
+    <h1 class="text-4xl md:text-5xl font-extrabold">
+      Osteoporosis Risk Prediction
+    </h1>
+
+    <p class="text-lg text-cream/80 mt-4">
+      Data Analysis • Machine Learning • Model Evaluation
+    </p>
+  </div>
+</section>
+
+<!-- =================== SWIPER =================== -->
+
+<section class="py-16">
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="swiper analysisSwiper">
+      <div class="swiper-wrapper">
+        <!-- ================================================= -->
+        <!-- Slide 1 -->
+        <!-- ================================================= -->
+
+        <div class="swiper-slide">
+          <div class="bg-cream shadow-lg rounded-3xl">
+            <div class="p-8 md:p-12">
+              <span
+                class="inline-block bg-coral text-cream text-xs font-semibold px-3 py-1 rounded-full mb-4"
+              >
+                Slide 1
+              </span>
+
+              <h2 class="text-2xl md:text-3xl font-bold text-wine mb-6">
+                Project Introduction
+              </h2>
+
+              <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                <div class="lg:col-span-7">
+                  <p class="text-lg text-wine/80 leading-relaxed">
+                    Osteoporosis is a bone disease characterized by decreased
+                    bone density, making bones weak and susceptible to
+                    fractures. Early prediction helps healthcare professionals
+                    identify high-risk individuals and begin preventive
+                    treatment.
+                  </p>
+
+                  <hr class="border-blush my-6" />
+
+                  <h5 class="font-bold text-wine mb-3">Project Objectives</h5>
+
+                  <ul class="list-disc list-inside space-y-1 text-wine/80">
+                    <li>Predict osteoporosis risk using Machine Learning.</li>
+                    <li>Analyze patient clinical data.</li>
+                    <li>Compare multiple ML algorithms.</li>
+                    <li>Select the best-performing model.</li>
+                    <li>Develop a web application using Flask.</li>
+                  </ul>
+                </div>
+
+                <div class="lg:col-span-5 text-center">
+                  <img
+                    src="{{ url_for('static', filename='images/analysis/intro.png') }}"
+                    class="max-w-full h-auto rounded-3xl mx-auto"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ================================================= -->
+        <!-- Slide 2 -->
+        <!-- ================================================= -->
+
+        <div class="swiper-slide">
+          <div class="bg-cream shadow-lg rounded-3xl">
+            <div class="p-8 md:p-12">
+              <span
+                class="inline-block bg-wine text-cream text-xs font-semibold px-3 py-1 rounded-full mb-4"
+              >
+                Slide 2
+              </span>
+
+              <h2 class="text-2xl md:text-3xl font-bold text-wine mb-6">
+                Dataset Overview
+              </h2>
+
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="overflow-hidden rounded-2xl border border-blush">
+                  <table class="w-full text-left">
+                    <tbody>
+                      <tr class="border-b border-blush">
+                        <th
+                          class="bg-blush/30 text-wine font-semibold px-4 py-3 w-1/2"
+                        >
+                          Total Records
+                        </th>
+                        <td class="px-4 py-3 text-wine/80">Dataset Value</td>
+                      </tr>
+
+                      <tr class="border-b border-blush">
+                        <th
+                          class="bg-blush/30 text-wine font-semibold px-4 py-3"
+                        >
+                          Total Features
+                        </th>
+                        <td class="px-4 py-3 text-wine/80">
+                          14 Input Features
+                        </td>
+                      </tr>
+
+                      <tr class="border-b border-blush">
+                        <th
+                          class="bg-blush/30 text-wine font-semibold px-4 py-3"
+                        >
+                          Target Variable
+                        </th>
+                        <td class="px-4 py-3 text-wine/80">Osteoporosis</td>
+                      </tr>
+
+                      <tr>
+                        <th
+                          class="bg-blush/30 text-wine font-semibold px-4 py-3"
+                        >
+                          Problem Type
+                        </th>
+                        <td class="px-4 py-3 text-wine/80">
+                          Binary Classification
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+
+                <div>
+                  <h5 class="font-bold text-wine mb-3">Input Features</h5>
+
+                  <ul
+                    class="list-disc list-inside grid grid-cols-1 sm:grid-cols-2 gap-x-4 gap-y-1 text-wine/80"
+                  >
+                    <li>Age</li>
+                    <li>Gender</li>
+                    <li>Hormonal Changes</li>
+                    <li>Family History</li>
+                    <li>Race / Ethnicity</li>
+                    <li>Body Weight</li>
+                    <li>Calcium Intake</li>
+                    <li>Vitamin D Intake</li>
+                    <li>Physical Activity</li>
+                    <li>Smoking</li>
+                    <li>Alcohol Consumption</li>
+                    <li>Medical Conditions</li>
+                    <li>Medications</li>
+                    <li>Prior Fractures</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ================================================= -->
+        <!-- Slide 3 -->
+        <!-- ================================================= -->
+
+        <div class="swiper-slide">
+          <div class="bg-cream shadow-lg rounded-3xl">
+            <div class="p-8 md:p-12">
+              <span
+                class="inline-block bg-blush text-wine text-xs font-semibold px-3 py-1 rounded-full mb-4"
+              >
+                Slide 3
+              </span>
+
+              <h2 class="text-2xl md:text-3xl font-bold text-wine mb-6">
+                Data Preprocessing
+              </h2>
+
+              <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <div>
+                  <h5 class="font-bold text-wine mb-3">Cleaning Process</h5>
+
+                  <ul class="list-disc list-inside space-y-1 text-wine/80">
+                    <li>Checked missing values</li>
+                    <li>Removed duplicate records</li>
+                    <li>Encoded categorical variables</li>
+                    <li>Converted features into numeric format</li>
+                    <li>Prepared dataset for training</li>
+                  </ul>
+                </div>
+
+                <div>
+                  <img
+                    src="{{ url_for('static', filename='images/analysis/preprocessing.png') }}"
+                    class="max-w-full h-auto rounded-3xl mx-auto"
+                  />
+                </div>
+              </div>
+
+              <div
+                class="mt-8 bg-blush/30 border border-blush text-wine rounded-2xl px-5 py-4"
+              >
+                <b>Outcome:</b>
+                The dataset became suitable for Machine Learning model
+                development after preprocessing.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ================================================= -->
+        <!-- Slide 4 -->
+        <!-- ================================================= -->
+
+        <div class="swiper-slide">
+          <div class="bg-cream shadow-lg rounded-3xl">
+            <div class="p-8 md:p-12">
+              <span
+                class="inline-block bg-coral text-cream text-xs font-semibold px-3 py-1 rounded-full mb-4"
+              >
+                Slide 4
+              </span>
+
+              <h2 class="text-2xl md:text-3xl font-bold text-wine mb-6">
+                Exploratory Data Analysis
+              </h2>
+
+              <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <div>
+                  <h5 class="font-bold text-wine mb-3">Key Insights</h5>
+
+                  <ul class="list-disc list-inside space-y-1 text-wine/80">
+                    <li>Distribution of patient ages</li>
+                    <li>Gender comparison</li>
+                    <li>Osteoporosis class distribution</li>
+                    <li>Feature relationships</li>
+                    <li>Risk factor visualization</li>
+                  </ul>
+                </div>
+
+                <div class="text-center">
+                  <img
+                    src="{{ url_for('static', filename='images/analysis/eda.png') }}"
+                    class="max-w-full h-auto rounded-3xl mx-auto"
+                  />
+                </div>
+              </div>
+
+              <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-12">
+                <div class="bg-blush/30 rounded-2xl">
+                  <div class="text-center py-8">
+                    <h1 class="text-4xl font-extrabold text-coral">14</h1>
+                    <p class="text-wine/70 mt-2">Clinical Features</p>
+                  </div>
+                </div>
+
+                <div class="bg-blush/30 rounded-2xl">
+                  <div class="text-center py-8">
+                    <h1 class="text-4xl font-extrabold text-wine">4</h1>
+                    <p class="text-wine/70 mt-2">ML Algorithms</p>
+                  </div>
+                </div>
+
+                <div class="bg-blush/30 rounded-2xl">
+                  <div class="text-center py-8">
+                    <h1 class="text-4xl font-extrabold text-coral">2</h1>
+                    <p class="text-wine/70 mt-2">Prediction Classes</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ================================================= -->
+        <!-- END PART 1 -->
+        <!-- ================================================= -->
+      </div>
+    </div>
+  </div>
+</section>
+<!-- ================================================= -->
+<!-- Slide 5 -->
+<!-- ================================================= -->
+
+<div class="swiper-slide">
+  <div class="bg-cream shadow-lg rounded-3xl">
+    <div class="p-8 md:p-12">
+      <span
+        class="inline-block bg-wine text-cream text-xs font-semibold px-3 py-1 rounded-full mb-4"
+      >
+        Slide 5
+      </span>
+
+      <h2 class="text-2xl md:text-3xl font-bold text-wine mb-6">
+        Correlation Analysis
+      </h2>
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+        <div class="lg:col-span-7">
+          <h5 class="font-bold text-wine mb-3">Feature Correlation</h5>
+
+          <p class="text-wine/80 leading-relaxed">
+            Correlation analysis helps identify relationships
+            between clinical variables and osteoporosis risk.
+          </p>
+
+          <ul class="list-disc list-inside space-y-1 text-wine/80 mt-4">
+            <li>Positive and negative correlations</li>
+            <li>Relationship between patient features</li>
+            <li>Identification of influential variables</li>
+            <li>Supports feature selection</li>
+          </ul>
+
+          <div class="mt-6 bg-blush/30 border border-blush text-wine rounded-2xl px-5 py-4">
+            <b>Observation:</b>
+            The heatmap indicates the strength of relationships
+            among input variables and the target variable.
+          </div>
+        </div>
+
+        <div class="lg:col-span-5">
+          <img
+            src="{{ url_for('static', filename='images/analysis/heatmap.png') }}"
+            class="max-w-full h-auto rounded-3xl shadow-md mx-auto"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ================================================= -->
+<!-- Slide 6 -->
+<!-- ================================================= -->
+
+<div class="swiper-slide">
+  <div class="bg-cream shadow-lg rounded-3xl">
+    <div class="p-8 md:p-12">
+      <span
+        class="inline-block bg-wine/70 text-cream text-xs font-semibold px-3 py-1 rounded-full mb-4"
+      >
+        Slide 6
+      </span>
+
+      <h2 class="text-2xl md:text-3xl font-bold text-wine mb-6">
+        Feature Importance
+      </h2>
+
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+        <div>
+          <img
+            src="{{ url_for('static', filename='images/analysis/feature_importance.png') }}"
+            class="max-w-full h-auto rounded-3xl shadow-md mx-auto"
+          />
+        </div>
+
+        <div>
+          <h5 class="font-bold text-wine mb-3">Most Important Features</h5>
+
+          <ul class="rounded-2xl overflow-hidden border border-blush divide-y divide-blush">
+            <li class="px-4 py-3 text-wine/80 bg-cream">Age</li>
+            <li class="px-4 py-3 text-wine/80 bg-blush/20">Hormonal Changes</li>
+            <li class="px-4 py-3 text-wine/80 bg-cream">Calcium Intake</li>
+            <li class="px-4 py-3 text-wine/80 bg-blush/20">Vitamin D Intake</li>
+            <li class="px-4 py-3 text-wine/80 bg-cream">Prior Fractures</li>
+            <li class="px-4 py-3 text-wine/80 bg-blush/20">Family History</li>
+          </ul>
+
+          <div class="mt-6 bg-blush/30 border border-blush text-wine rounded-2xl px-5 py-4">
+            Feature importance was obtained from the
+            Random Forest model to understand which
+            clinical variables contribute most to prediction.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ================================================= -->
+<!-- Slide 7 -->
+<!-- ================================================= -->
+
+<div class="swiper-slide">
+  <div class="bg-cream shadow-lg rounded-3xl">
+    <div class="p-8 md:p-12">
+      <span
+        class="inline-block bg-coral text-cream text-xs font-semibold px-3 py-1 rounded-full mb-4"
+      >
+        Slide 7
+      </span>
+
+      <h2 class="text-2xl md:text-3xl font-bold text-wine mb-6">
+        Machine Learning Model Building
+      </h2>
+
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        <div>
+          <h5 class="font-bold text-wine mb-3">Models Used</h5>
+
+          <div class="rounded-2xl overflow-hidden border border-blush divide-y divide-blush">
+            <div class="flex items-center px-4 py-3 text-wine/80 bg-cream">
+              <i class="bi bi-check-circle-fill text-coral mr-2"></i>
+              Logistic Regression
+            </div>
+
+            <div class="flex items-center px-4 py-3 text-wine/80 bg-blush/20">
+              <i class="bi bi-check-circle-fill text-coral mr-2"></i>
+              Decision Tree
+            </div>
+
+            <div class="flex items-center px-4 py-3 text-wine/80 bg-cream">
+              <i class="bi bi-check-circle-fill text-coral mr-2"></i>
+              Random Forest
+            </div>
+
+            <div class="flex items-center px-4 py-3 text-wine/80 bg-blush/20">
+              <i class="bi bi-check-circle-fill text-coral mr-2"></i>
+              Support Vector Machine
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <div class="bg-blush/20 rounded-2xl">
+            <div class="p-6">
+              <h5 class="font-bold text-wine mb-3">Workflow</h5>
+
+              <hr class="border-blush mb-4" />
+
+              <div class="text-center text-wine/80 leading-8">
+                Dataset
+                <br />
+                ↓
+                <br />
+                Data Cleaning
+                <br />
+                ↓
+                <br />
+                Feature Engineering
+                <br />
+                ↓
+                <br />
+                Train-Test Split
+                <br />
+                ↓
+                <br />
+                Model Training
+                <br />
+                ↓
+                <br />
+                Evaluation
+                <br />
+                ↓
+                <br />
+                Final Prediction
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ================================================= -->
+<!-- Slide 8 -->
+<!-- ================================================= -->
+
+<div class="swiper-slide">
+  <div class="bg-cream shadow-lg rounded-3xl">
+    <div class="p-8 md:p-12">
+      <span
+        class="inline-block bg-wine text-cream text-xs font-semibold px-3 py-1 rounded-full mb-4"
+      >
+        Slide 8
+      </span>
+
+      <h2 class="text-2xl md:text-3xl font-bold text-wine mb-6">
+        Model Comparison
+      </h2>
+
+      <div class="overflow-x-auto rounded-2xl border border-blush">
+        <table class="w-full text-center">
+          <thead class="bg-wine text-cream">
+            <tr>
+              <th class="px-4 py-3 font-semibold">Model</th>
+              <th class="px-4 py-3 font-semibold">Accuracy</th>
+              <th class="px-4 py-3 font-semibold">Precision</th>
+              <th class="px-4 py-3 font-semibold">Recall</th>
+              <th class="px-4 py-3 font-semibold">F1-Score</th>
+            </tr>
+          </thead>
+
+          <tbody class="divide-y divide-blush">
+            <tr class="hover:bg-blush/20 transition-colors duration-200">
+              <td class="px-4 py-3 text-wine/80">Logistic Regression</td>
+              <td class="px-4 py-3 text-wine/80">--</td>
+              <td class="px-4 py-3 text-wine/80">--</td>
+              <td class="px-4 py-3 text-wine/80">--</td>
+              <td class="px-4 py-3 text-wine/80">--</td>
+            </tr>
+
+            <tr class="hover:bg-blush/20 transition-colors duration-200">
+              <td class="px-4 py-3 text-wine/80">Decision Tree</td>
+              <td class="px-4 py-3 text-wine/80">--</td>
+              <td class="px-4 py-3 text-wine/80">--</td>
+              <td class="px-4 py-3 text-wine/80">--</td>
+              <td class="px-4 py-3 text-wine/80">--</td>
+            </tr>
+
+            <tr class="bg-blush/40 font-semibold">
+              <td class="px-4 py-3 text-wine"><b>Random Forest</b></td>
+              <td class="px-4 py-3 text-wine"><b>Best</b></td>
+              <td class="px-4 py-3 text-wine"><b>Best</b></td>
+              <td class="px-4 py-3 text-wine"><b>Best</b></td>
+              <td class="px-4 py-3 text-wine"><b>Best</b></td>
+            </tr>
+
+            <tr class="hover:bg-blush/20 transition-colors duration-200">
+              <td class="px-4 py-3 text-wine/80">SVM</td>
+              <td class="px-4 py-3 text-wine/80">--</td>
+              <td class="px-4 py-3 text-wine/80">--</td>
+              <td class="px-4 py-3 text-wine/80">--</td>
+              <td class="px-4 py-3 text-wine/80">--</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="mt-6 bg-blush/30 border border-blush text-wine rounded-2xl px-5 py-4">
+        <b>Result:</b>
+        Random Forest achieved the highest overall performance
+        and was selected as the final prediction model.
+      </div>
+    </div>
+  </div>
+</div>
+<!-- ================================================= -->
+<!-- Slide 9 -->
+<!-- ================================================= -->
+
+<div class="swiper-slide">
+  <div class="bg-cream shadow-lg rounded-3xl">
+    <div class="p-8 md:p-12">
+      <span
+        class="inline-block bg-coral text-cream text-xs font-semibold px-3 py-1 rounded-full mb-4"
+      >
+        Slide 9
+      </span>
+
+      <h2 class="text-2xl md:text-3xl font-bold text-wine mb-6">
+        Best Model Performance
+      </h2>
+
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        <div>
+          <img
+            src="{{ url_for('static', filename='images/analysis/confusion_matrix.png') }}"
+            class="max-w-full h-auto rounded-3xl shadow-md mx-auto"
+          />
+        </div>
+
+        <div>
+          <h4 class="font-bold text-coral">Selected Model</h4>
+
+          <h2 class="text-3xl font-extrabold text-wine mt-1">
+            Random Forest Classifier
+          </h2>
+
+          <hr class="border-blush my-5" />
+
+          <div class="grid grid-cols-2 gap-4 text-center">
+            <div class="rounded-2xl border-2 border-coral">
+              <div class="p-5">
+                <h5 class="font-semibold text-coral">Accuracy</h5>
+                <h3 class="text-2xl font-bold text-wine mt-1">
+                  {{ accuracy|default("XX.XX") }}%
+                </h3>
+              </div>
+            </div>
+
+            <div class="rounded-2xl border-2 border-wine">
+              <div class="p-5">
+                <h5 class="font-semibold text-wine">ROC-AUC</h5>
+                <h3 class="text-2xl font-bold text-wine mt-1">
+                  {{ roc_auc|default("XX.XX") }}
+                </h3>
+              </div>
+            </div>
+          </div>
+
+          <div class="bg-blush/30 border border-blush text-wine rounded-2xl px-5 py-4 mt-2">
+            <b>Reason for Selection</b>
+
+            <ul class="list-disc list-inside mt-3 space-y-1">
+              <li>Highest prediction accuracy.</li>
+              <li>Balanced precision and recall.</li>
+              <li>Reduced overfitting.</li>
+              <li>Excellent generalization performance.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mt-8">
+        <div>
+          <img
+            src="{{ url_for('static', filename='images/analysis/roc_curve.png') }}"
+            class="max-w-full h-auto rounded-3xl shadow-md mx-auto"
+          />
+        </div>
+
+        <div>
+          <img
+            src="{{ url_for('static', filename='images/analysis/classification_report.png') }}"
+            class="max-w-full h-auto rounded-3xl shadow-md mx-auto"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ================================================= -->
+<!-- Slide 10 -->
+<!-- ================================================= -->
+
+<div class="swiper-slide">
+  <div class="bg-cream shadow-lg rounded-3xl">
+    <div class="p-8 md:p-12">
+      <span
+        class="inline-block bg-wine text-cream text-xs font-semibold px-3 py-1 rounded-full mb-4"
+      >
+        Slide 10
+      </span>
+
+      <h2 class="text-2xl md:text-3xl font-bold text-wine mb-6">
+        Conclusion & Future Scope
+      </h2>
+
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        <div>
+          <h4 class="font-bold text-wine mb-3">Project Summary</h4>
+
+          <ul class="rounded-2xl overflow-hidden border border-blush divide-y divide-blush">
+            <li class="px-4 py-3 text-wine/80 bg-cream">
+              Dataset successfully analyzed.
+            </li>
+            <li class="px-4 py-3 text-wine/80 bg-blush/20">
+              Data preprocessing completed.
+            </li>
+            <li class="px-4 py-3 text-wine/80 bg-cream">
+              Exploratory Data Analysis performed.
+            </li>
+            <li class="px-4 py-3 text-wine/80 bg-blush/20">
+              Multiple Machine Learning models evaluated.
+            </li>
+            <li class="px-4 py-3 text-wine/80 bg-cream">
+              Random Forest selected as the final model.
+            </li>
+            <li class="px-4 py-3 text-wine/80 bg-blush/20">
+              Flask web application developed for prediction.
+            </li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="font-bold text-wine mb-3">Future Enhancements</h4>
+
+          <ul class="rounded-2xl overflow-hidden border border-blush divide-y divide-blush">
+            <li class="px-4 py-3 text-wine/80 bg-cream">
+              Integrate real hospital datasets.
+            </li>
+            <li class="px-4 py-3 text-wine/80 bg-blush/20">
+              Add Explainable AI (SHAP/LIME).
+            </li>
+            <li class="px-4 py-3 text-wine/80 bg-cream">
+              Cloud deployment.
+            </li>
+            <li class="px-4 py-3 text-wine/80 bg-blush/20">
+              Doctor Dashboard.
+            </li>
+            <li class="px-4 py-3 text-wine/80 bg-cream">
+              Patient Report PDF generation.
+            </li>
+            <li class="px-4 py-3 text-wine/80 bg-blush/20">
+              Mobile Application.
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="text-center mt-12">
+        <h2 class="text-3xl font-extrabold text-coral">Thank You</h2>
+
+        <p class="text-lg text-wine/70 mt-2">
+          Osteoporosis Risk Prediction using Machine Learning
+        </p>
+
+        <a
+          href="{{ url_for('prediction') }}"
+          class="inline-block bg-coral text-cream text-lg font-semibold px-8 py-4 rounded-2xl shadow-lg mt-5 transition-all duration-300 hover:bg-wine hover:-translate-y-1 hover:shadow-xl"
+        >
+          Predict Now
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ================= CLOSE WRAPPER ================= -->
+</div>
+
+<!-- Pagination -->
+<div class="swiper-pagination mt-4"></div>
+
+<!-- Navigation -->
+<div class="swiper-button-next"></div>
+<div class="swiper-button-prev"></div>
+</div>
+</div>
+</section>
+
+<style>
+  /* Recolor Swiper's built-in nav/pagination controls to match the palette */
+  .analysisSwiper {
+    --swiper-theme-color: #ee6983;
+    --swiper-navigation-size: 22px;
+    --swiper-pagination-bullet-inactive-color: #ffc4c4;
+    --swiper-pagination-bullet-inactive-opacity: 0.8;
+  }
+
+  .analysisSwiper .swiper-button-next,
+  .analysisSwiper .swiper-button-prev {
+    background-color: #fcf5ee;
+    width: 44px;
+    height: 44px;
+    border-radius: 9999px;
+    box-shadow: 0 4px 14px rgba(133, 14, 53, 0.15);
+  }
+</style>
+
+{% endblock %}
+
+<!-- ================= Swiper JS ================= -->
+
+{% block scripts %}
+
+<script>
+  const swiper = new Swiper(".analysisSwiper", {
+    slidesPerView: 1,
+    spaceBetween: 30,
+    loop: false,
+    speed: 800,
+    grabCursor: true,
+    keyboard: true,
+
+    autoplay: {
+      delay: 5000,
+      disableOnInteraction: false,
+    },
+
+    pagination: {
+      el: ".swiper-pagination",
+      clickable: true,
+    },
+
+    navigation: {
+      nextEl: ".swiper-button-next",
+      prevEl: ".swiper-button-prev",
+    },
+
+    effect: "slide",
+
+    breakpoints: {
+      768: {
+        slidesPerView: 1,
+      },
+
+      1200: {
+        slidesPerView: 1,
+      },
+    },
+  });
+</script>
+
+{% endblock %}

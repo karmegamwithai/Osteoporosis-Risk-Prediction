@@ -1,0 +1,114 @@
+<nav
+  class="bg-white/95 backdrop-blur-lg shadow-sm border-b border-blue-100 sticky top-0 z-40"
+>
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="flex items-center justify-between h-20">
+      <!-- Logo -->
+
+      <a class="flex items-center gap-3" href="{{ url_for('home') }}">
+        <div>
+          <h5 class="mb-0 font-bold text-blue-900 leading-tight">
+            Osteoporosis
+          </h5>
+          <small class="text-blue-600 text-xs"> Risk Prediction </small>
+        </div>
+      </a>
+
+      <!-- Mobile Toggle -->
+
+      <button
+        id="navToggle"
+        type="button"
+        class="lg:hidden inline-flex items-center justify-center h-11 w-11 rounded-xl text-blue-900 hover:bg-blue-100 transition-colors duration-200"
+        aria-label="Toggle navigation"
+        aria-expanded="false"
+        aria-controls="navbarMenu"
+      >
+        <i class="bi bi-list text-2xl"></i>
+      </button>
+
+      <!-- Menu (desktop) -->
+
+      <ul class="hidden lg:flex items-center gap-2">
+        <li>
+          <a
+            class="flex items-center px-4 py-2 rounded-xl text-blue-700 hover:bg-blue-100 hover:text-blue-900 transition-all duration-300 {% if request.endpoint == 'home' %} font-semibold text-white bg-gradient-to-r from-sky-500 to-blue-700 shadow-md {% endif %}"
+            href="{{ url_for('home') }}"
+          >
+            <i class="bi bi-house-door mr-1"></i>
+            Home
+          </a>
+        </li>
+
+        <li>
+          <a
+            class="flex items-center px-4 py-2 rounded-xl text-blue-700 hover:bg-blue-100 hover:text-blue-900 transition-all duration-300 {% if request.endpoint == 'analysis' %} font-semibold text-white bg-gradient-to-r from-sky-500 to-blue-700 shadow-md {% endif %}"
+            href="{{ url_for('analysis') }}"
+          >
+            <i class="bi bi-bar-chart-line mr-1"></i>
+            Analysis
+          </a>
+        </li>
+
+        <li>
+          <a
+            class="flex items-center px-4 py-2 rounded-xl text-blue-700 hover:bg-blue-100 hover:text-blue-900 transition-all duration-300 {% if request.endpoint == 'prediction' %} font-semibold text-white bg-gradient-to-r from-sky-500 to-blue-700 shadow-md {% endif %}"
+            href="{{ url_for('prediction') }}"
+          >
+            <i class="bi bi-heart-pulse mr-1"></i>
+            Prediction
+          </a>
+        </li>
+      </ul>
+    </div>
+
+    <!-- Menu (mobile) -->
+
+    <div id="navbarMenu" class="lg:hidden hidden pb-6">
+      <ul class="flex flex-col gap-2">
+        <li>
+          <a
+            class="flex items-center px-4 py-3 rounded-xl text-blue-700 hover:bg-blue-100 hover:text-blue-900 transition-all duration-300 {% if request.endpoint == 'home' %} font-semibold text-white bg-gradient-to-r from-sky-500 to-blue-700 shadow-md {% endif %}"
+            href="{{ url_for('home') }}"
+          >
+            <i class="bi bi-house-door mr-2"></i>
+            Home
+          </a>
+        </li>
+
+        <li>
+          <a
+            class="flex items-center px-4 py-3 rounded-xl text-blue-700 hover:bg-blue-100 hover:text-blue-900 transition-all duration-300 {% if request.endpoint == 'analysis' %} font-semibold text-white bg-gradient-to-r from-sky-500 to-blue-700 shadow-md {% endif %}"
+            href="{{ url_for('analysis') }}"
+          >
+            <i class="bi bi-bar-chart-line mr-2"></i>
+            Analysis
+          </a>
+        </li>
+
+        <li>
+          <a
+            class="flex items-center px-4 py-3 rounded-xl text-blue-700 hover:bg-blue-100 hover:text-blue-900 transition-all duration-300 {% if request.endpoint == 'prediction' %} font-semibold text-white bg-gradient-to-r from-sky-500 to-blue-700 shadow-md {% endif %}"
+            href="{{ url_for('prediction') }}"
+          >
+            <i class="bi bi-heart-pulse mr-2"></i>
+            Prediction
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<script>
+  (function () {
+    const toggleBtn = document.getElementById("navToggle");
+    const menu = document.getElementById("navbarMenu");
+    if (toggleBtn && menu) {
+      toggleBtn.addEventListener("click", () => {
+        const isHidden = menu.classList.toggle("hidden");
+        toggleBtn.setAttribute("aria-expanded", String(!isHidden));
+      });
+    }
+  })();
+</script>

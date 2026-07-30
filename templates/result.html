@@ -1,0 +1,429 @@
+{% extends 'base.html' %} {% block title %} Prediction Result {% endblock %} {%
+block content %}
+
+<section
+  class="min-h-screen bg-gradient-to-b from-white via-sky-50 to-blue-100 py-14"
+>
+  <div class="max-w-7xl mx-auto px-6">
+    <!-- ================= HERO ================= -->
+
+    <div class="text-center mb-12">
+      <span
+        class="inline-flex items-center rounded-full bg-blue-100 px-5 py-2 font-semibold text-blue-900"
+      >
+        Prediction Completed
+      </span>
+
+      <h1 class="mt-5 text-5xl font-extrabold text-blue-900">
+        Osteoporosis Risk Prediction Result
+      </h1>
+
+      <p class="mt-4 max-w-3xl mx-auto text-lg text-gray-600">
+        The Machine Learning model has analyzed the patient information and
+        generated the following osteoporosis risk prediction.
+      </p>
+    </div>
+
+    <!-- ================= RESULT CARD ================= -->
+
+    <div class="grid lg:grid-cols-3 gap-8">
+      <!-- Prediction Card -->
+
+      <div class="lg:col-span-2">
+        <div
+          class="bg-white rounded-3xl shadow-2xl overflow-hidden border border-blue-200"
+        >
+          <!-- Header -->
+
+          <div class="bg-gradient-to-r from-blue-900 to-sky-400 px-10 py-8">
+            <h2 class="text-3xl font-bold text-white flex items-center gap-3">
+              <i class="fa-solid fa-heart-pulse"></i>
+
+              Prediction Result
+            </h2>
+          </div>
+
+          <!-- Body -->
+
+          <div class="p-10">
+            {% if prediction == 0 %}
+
+            <!-- HIGH RISK -->
+
+            <div
+              class="rounded-3xl bg-red-50 border-2 border-red-200 p-8 text-center"
+            >
+              <div
+                class="mx-auto flex h-28 w-28 items-center justify-center rounded-full bg-red-100"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                  class="h-14 w-14 text-red-600"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M9.401 3.003c1.155-2.004 4.043-2.004 5.198 0l7.297 12.657c1.154 2.003-.289 4.505-2.599 4.505H4.703c-2.31 0-3.753-2.502-2.599-4.505L9.401 3.003ZM12 8.25a.75.75 0 0 1 .75.75v4.5a.75.75 0 0 1-1.5 0V9a.75.75 0 0 1 .75-.75Zm0 8.25a1.125 1.125 0 1 0 0-2.25 1.125 1.125 0 0 0 0 2.25Z"
+                    clip-rule="evenodd"
+                  />
+                </svg>
+              </div>
+
+              <h2 class="mt-6 text-4xl font-extrabold text-red-700">
+                High Risk
+              </h2>
+
+              <p class="mt-4 text-lg text-gray-700">
+                The patient is predicted to have a
+                <strong>High Risk</strong>
+                of osteoporosis.
+              </p>
+            </div>
+
+            {% else %}
+
+            <!-- LOW RISK -->
+
+            <div
+              class="rounded-3xl bg-green-50 border-2 border-green-200 p-8 text-center"
+            >
+              <div
+                class="mx-auto flex h-28 w-28 items-center justify-center rounded-full bg-green-100"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                  class="h-14 w-14 text-green-600"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75S21.75 6.615 21.75 12 17.385 21.75 12 21.75 2.25 17.385 2.25 12Zm13.28-2.53a.75.75 0 0 0-1.06-1.06l-3.53 3.53-1.41-1.41a.75.75 0 1 0-1.06 1.06l1.94 1.94a.75.75 0 0 0 1.06 0l4.06-4.06Z"
+                    clip-rule="evenodd"
+                  />
+                </svg>
+              </div>
+
+              <h2 class="mt-6 text-4xl font-extrabold text-green-700">
+                Low Risk
+              </h2>
+
+              <p class="mt-4 text-lg text-gray-700">
+                The patient is predicted to have a
+                <strong>Low Risk</strong>
+                of osteoporosis.
+              </p>
+            </div>
+
+            {% endif %}
+
+            <!-- ================= PROBABILITY ================= -->
+
+            <div class="mt-12">
+              <div
+                class="flex justify-between mb-3 text-blue-900 font-semibold"
+              >
+                <span> Prediction Confidence </span>
+
+                <span> {{ probability }}% </span>
+              </div>
+
+              <div class="w-full h-6 rounded-full bg-blue-100 overflow-hidden">
+                <div
+                  class="h-6 rounded-full bg-gradient-to-r from-sky-400 to-blue-900"
+                  style="width: {{ probability }}%;"
+                ></div>
+              </div>
+            </div>
+
+            <!-- ================= MODEL INFO ================= -->
+
+            <div
+              class="mt-10 rounded-2xl bg-blue-50 border border-blue-200 p-6"
+            >
+              <h3 class="text-xl font-bold text-blue-900 mb-4">
+                Prediction Details
+              </h3>
+
+              <div class="grid md:grid-cols-2 gap-5">
+                <div>
+                  <p class="text-sm uppercase tracking-wide text-gray-500">
+                    Model
+                  </p>
+
+                  <h4 class="font-bold text-lg text-blue-900">
+                    Random Forest Classifier
+                  </h4>
+                </div>
+
+                <div>
+                  <p class="text-sm uppercase tracking-wide text-gray-500">
+                    Prediction Type
+                  </p>
+
+                  <h4 class="font-bold text-lg text-blue-900">
+                    Binary Classification
+                  </h4>
+                </div>
+
+                <div>
+                  <p class="text-sm uppercase tracking-wide text-gray-500">
+                    Status
+                  </p>
+
+                  <h4 class="font-bold text-lg text-blue-900">Completed</h4>
+                </div>
+
+                <div>
+                  <p class="text-sm uppercase tracking-wide text-gray-500">
+                    Generated
+                  </p>
+
+                  <h4 class="font-bold text-lg text-blue-900">Just Now</h4>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ================= RECOMMENDATIONS ================= -->
+
+        <div class="mt-10">
+          {% if prediction == 1 %}
+
+          <div class="bg-red-50 border border-red-200 rounded-3xl p-8">
+            <h2 class="text-3xl font-bold text-red-700 mb-6">
+              Recommendations
+            </h2>
+
+            <div class="grid md:grid-cols-2 gap-6">
+              <div class="bg-white rounded-2xl p-5 shadow">
+                <h4 class="font-bold text-blue-900 mb-3">
+                  🩺 Medical Consultation
+                </h4>
+
+                <p class="text-gray-600">
+                  Schedule an appointment with an orthopedic specialist or
+                  endocrinologist for a detailed bone health assessment.
+                </p>
+              </div>
+
+              <div class="bg-white rounded-2xl p-5 shadow">
+                <h4 class="font-bold text-blue-900 mb-3">
+                  💊 Calcium & Vitamin D
+                </h4>
+
+                <p class="text-gray-600">
+                  Ensure sufficient calcium intake and maintain healthy Vitamin
+                  D levels under medical supervision.
+                </p>
+              </div>
+
+              <div class="bg-white rounded-2xl p-5 shadow">
+                <h4 class="font-bold text-blue-900 mb-3">🏃 Exercise</h4>
+
+                <p class="text-gray-600">
+                  Perform weight-bearing and resistance exercises regularly to
+                  improve bone strength.
+                </p>
+              </div>
+
+              <div class="bg-white rounded-2xl p-5 shadow">
+                <h4 class="font-bold text-blue-900 mb-3">
+                  📋 Bone Density Test
+                </h4>
+
+                <p class="text-gray-600">
+                  Your physician may recommend a DEXA scan for further
+                  evaluation.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          {% else %}
+
+          <div class="bg-green-50 border border-green-200 rounded-3xl p-8">
+            <h2 class="text-3xl font-bold text-green-700 mb-6">
+              Healthy Lifestyle
+            </h2>
+
+            <div class="grid md:grid-cols-2 gap-6">
+              <div class="bg-white rounded-2xl p-5 shadow">
+                <h4 class="font-bold text-blue-900 mb-3">🥗 Balanced Diet</h4>
+
+                <p class="text-gray-600">
+                  Continue consuming foods rich in calcium, protein and Vitamin
+                  D.
+                </p>
+              </div>
+
+              <div class="bg-white rounded-2xl p-5 shadow">
+                <h4 class="font-bold text-blue-900 mb-3">🚶 Stay Active</h4>
+
+                <p class="text-gray-600">
+                  Maintain regular physical activity to preserve bone density
+                  and muscle strength.
+                </p>
+              </div>
+
+              <div class="bg-white rounded-2xl p-5 shadow">
+                <h4 class="font-bold text-blue-900 mb-3">🚭 Healthy Habits</h4>
+
+                <p class="text-gray-600">
+                  Avoid smoking and excessive alcohol consumption.
+                </p>
+              </div>
+
+              <div class="bg-white rounded-2xl p-5 shadow">
+                <h4 class="font-bold text-blue-900 mb-3">
+                  🩻 Regular Checkups
+                </h4>
+
+                <p class="text-gray-600">
+                  Continue routine health examinations to monitor bone health.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          {% endif %}
+        </div>
+      </div>
+
+      <!-- ================= SIDEBAR ================= -->
+
+      <div class="space-y-6">
+        <!-- Circular Gauge -->
+
+        <div
+          class="bg-white rounded-3xl shadow-xl border border-blue-200 p-8 text-center"
+        >
+          <h3 class="text-2xl font-bold text-blue-900">Risk Score</h3>
+
+          <div
+            class="mt-8 mx-auto h-52 w-52 rounded-full border-[14px] border-sky-400 flex items-center justify-center"
+          >
+            <div>
+              <h1 class="text-5xl font-extrabold text-blue-900">
+                {{ probability }}%
+              </h1>
+
+              <p class="text-gray-500 mt-2">Confidence</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Summary -->
+
+        <div class="bg-blue-900 rounded-3xl p-8 text-white">
+          <h3 class="text-2xl font-bold">Summary</h3>
+
+          <ul class="mt-6 space-y-3">
+            <li>✔ Patient data processed successfully</li>
+
+            <li>✔ Machine Learning prediction completed</li>
+
+            <li>✔ Random Forest model utilized</li>
+
+            <li>✔ Confidence score calculated</li>
+          </ul>
+        </div>
+
+        <!-- Health Tips -->
+
+        <div class="bg-white rounded-3xl border border-blue-200 shadow-xl p-8">
+          <h3 class="text-2xl font-bold text-blue-900">Bone Health Tips</h3>
+
+          <div class="space-y-4 mt-6">
+            <div class="flex gap-3">
+              <div
+                class="w-12 h-12 rounded-full bg-blue-100 flex items-center justify-center"
+              >
+                🥛
+              </div>
+
+              <div>
+                <h4 class="font-semibold text-blue-900">Calcium</h4>
+
+                <p class="text-gray-600">
+                  Consume milk, yogurt and leafy vegetables.
+                </p>
+              </div>
+            </div>
+
+            <div class="flex gap-3">
+              <div
+                class="w-12 h-12 rounded-full bg-blue-100 flex items-center justify-center"
+              >
+                ☀️
+              </div>
+
+              <div>
+                <h4 class="font-semibold text-blue-900">Vitamin D</h4>
+
+                <p class="text-gray-600">Get regular sunlight exposure.</p>
+              </div>
+            </div>
+
+            <div class="flex gap-3">
+              <div
+                class="w-12 h-12 rounded-full bg-blue-100 flex items-center justify-center"
+              >
+                🏃
+              </div>
+
+              <div>
+                <h4 class="font-semibold text-blue-900">Exercise</h4>
+
+                <p class="text-gray-600">
+                  Walk, jog and perform strength training.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Disclaimer -->
+
+        <div class="bg-blue-900 rounded-3xl p-8 text-white">
+          <h3 class="text-2xl font-bold">Disclaimer</h3>
+
+          <p class="mt-5 leading-8">
+            This prediction is generated using a Machine Learning model and is
+            intended only for educational and decision-support purposes. It
+            should not replace professional medical diagnosis or treatment.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ================= ACTION BUTTONS ================= -->
+
+    <div class="mt-14 flex flex-wrap justify-center gap-5">
+      <a
+        href="{{ url_for('prediction') }}"
+        class="px-8 py-4 rounded-xl bg-gradient-to-r from-sky-400 to-blue-900 text-white font-semibold shadow-lg hover:from-blue-900 hover:to-sky-400 transition duration-300"
+      >
+        Predict Again
+      </a>
+
+      <a
+        href="{{ url_for('home') }}"
+        class="px-8 py-4 rounded-xl border-2 border-blue-900 text-blue-900 font-semibold hover:bg-blue-900 hover:text-white transition"
+      >
+        Back to Home
+      </a>
+
+      <button
+        onclick="window.print()"
+        class="px-8 py-4 rounded-xl bg-gradient-to-r from-sky-400 to-blue-900 text-white font-semibold shadow-lg hover:from-blue-900 hover:to-sky-400 transition duration-300"
+      >
+        Print Report
+      </button>
+    </div>
+  </div>
+</section>
+
+{% endblock %}
