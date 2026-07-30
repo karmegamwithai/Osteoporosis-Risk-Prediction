@@ -9,10 +9,11 @@ app = Flask(__name__)
 # Load Trained Model
 # --------------------------------------------------
 
-MODEL_PATH = os.path.join("models", "RFC_model.pkl")
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
-model = joblib.load(MODEL_PATH)
-
+model = joblib.load(
+    os.path.join(BASE_DIR, "models", "RFC_model.pkl")
+)
 
 # --------------------------------------------------
 # Home Page
