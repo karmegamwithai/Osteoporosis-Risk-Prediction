@@ -211,20 +211,18 @@ Along with prediction confidence (if implemented).
 
 ## 📈 Model Performance
 
-Include your evaluation metrics here.
+The following table shows the training accuracy achieved by each Machine Learning algorithm used in this project.
 
-Example:
+| Machine Learning Model          | Training Accuracy |
+| ------------------------------- | ----------------: |
+| Logistic Regression             |        **82.85%** |
+| Random Forest Classifier        |        **93.94%** |
+| Decision Tree Classifier        |        **90.95%** |
+| Support Vector Classifier (SVC) |        **83.43%** |
 
-| Metric    | Score |
-| --------- | ----- |
-| Accuracy  | 94.8% |
-| Precision | 94.2% |
-| Recall    | 95.1% |
-| F1 Score  | 94.6% |
+### 🏆 Best Performing Model
 
-> Replace the above values with your actual model performance.
-
----
+## The **Random Forest Classifier** achieved the highest training accuracy of **93.94%**, making it the selected model for osteoporosis risk prediction in this project.
 
 ## 📚 Python Libraries
 
