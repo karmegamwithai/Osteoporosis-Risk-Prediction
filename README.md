@@ -222,7 +222,7 @@ The following table shows the training accuracy achieved by each Machine Learnin
 
 ### 🏆 Best Performing Model
 
-## The **Random Forest Classifier** achieved the highest training accuracy of **93.94%**, making it the selected model for osteoporosis risk prediction in this project.
+ The **Random Forest Classifier** achieved the highest training accuracy of **93.94%**, making it the selected model for osteoporosis risk prediction in this project.
 
 ## 📚 Python Libraries
 
